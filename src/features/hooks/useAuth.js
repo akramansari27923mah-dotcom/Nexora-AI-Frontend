@@ -65,9 +65,6 @@ const useAuth = () => {
 
         localStorage.removeItem('user')
 
-        // if (user?.id) {
-        //     localStorage.removeItem(`message_${user.id}`)
-        // }
 
         setUser(null)
     }

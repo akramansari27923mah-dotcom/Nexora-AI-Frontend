@@ -114,9 +114,9 @@ const Prompt = ({ setMenuClose, setLargeMenu, largeMenu, message, setMessage }) 
       </button>
 
       {/* Chat area */}
-      <div className="flex-1 w-full max-w-4xl mx-auto mb-12 md:mb-20  overflow-y-auto px-4 py-4">
+      <div className="flex-1 w-full max-w-4xl mx-auto hide-scroll mb-12 md:mb-20  overflow-y-scroll overflow-x-hidden px-4 py-4">
 
-        {message.length === 0 && (  
+        {message.length === 0 && (
           <div className="flex flex-col justify-center items-center h-[70vh] text-center space-y-4">
             <h1 className="text-4xl font-bold text-white">
               Hey, {user.username} 👋
@@ -142,8 +142,8 @@ const Prompt = ({ setMenuClose, setLargeMenu, largeMenu, message, setMessage }) 
 
             <div
               className={`max-w-[80%] px-4 py-3 rounded-2xl text-sm leading-relaxed shadow-md ${msg.role === "user"
-                  ? "bg-blue-600 text-white rounded-br-none"
-                  : "bg-gray-800 text-gray-100 rounded-bl-none"
+                ? "bg-blue-600 text-white rounded-br-none"
+                : "bg-gray-800 text-gray-100 rounded-bl-none"
                 }`}
             >
               <ChatMarkdown content={msg.content} />

@@ -23,7 +23,7 @@ const Sidebar = ({ menuClose, setMenuClose, setLargeMenu, largeMenu, message, se
     return (
         <>
             <div
-                className={`hidden md:flex z-10 flex-col  fixed top-0 left-0 overflow-hidden bg-gray-800 h-screen transition-all duration-300 ${largeMenu ? "w-[230px] p-3" : "w-0 p-0"
+                className={`hidden md:flex z-10 flex-col  fixed top-0 left-0 overflow-hidden bg-gray-800 h-screen transition-all duration-300 ${largeMenu ? "w-[250px] p-3" : "w-0 p-0"
                     }`}
             >
                 <div>
@@ -46,7 +46,7 @@ const Sidebar = ({ menuClose, setMenuClose, setLargeMenu, largeMenu, message, se
 
                     <div
                         onClick={() => setShow(!show)}
-                        className="flex items-center gap-3 px-5 py-2 rounded-xl bg-gray-800/60 backdrop-blur-md border border-gray-700 hover:border-blue-500 hover:bg-gray-800 transition-all duration-300 cursor-pointer group"
+                        className="flex items-center gap-3 px-3 py-2 rounded-xl bg-gray-800/60 backdrop-blur-md border border-gray-700 hover:border-blue-500 hover:bg-gray-800 transition-all duration-300 cursor-pointer group"
                     >
 
                         <div className="w-9 h-9 rounded-full overflow-hidden border border-gray-600">
@@ -55,7 +55,7 @@ const Sidebar = ({ menuClose, setMenuClose, setLargeMenu, largeMenu, message, se
 
                         <p className="text-gray-300 group-hover:text-white font-mono text-sm font-medium">
                             {user.username}
-                            <p className="text-gray-400 text-[12px]">{user.email}</p>
+                            <p className="text-gray-400 text-[10px]">{user.email}</p>
                         </p>
 
                     </div>
@@ -94,7 +94,7 @@ const Sidebar = ({ menuClose, setMenuClose, setLargeMenu, largeMenu, message, se
 
             {
                 menuClose && (
-                    <div className="flex flex-col z-20 animate__animated animate__slideInLeft justify-center w-6/12 min-h-screen p-3 md:hidden top-0 left-0 absolute bg-gray-800 ">
+                    <div className="flex flex-col z-20 animate__animated animate__slideInLeft justify-center w-7/12 min-h-screen p-3 md:hidden top-0 left-0 absolute bg-gray-800 ">
                         <div className="flex justify-between items-center">
                             <h1 className="font-bold text-xl">Nexora AI</h1>
                             <X className="cursor-pointer" onClick={() => setMenuClose(false)} />
@@ -123,8 +123,10 @@ const Sidebar = ({ menuClose, setMenuClose, setLargeMenu, largeMenu, message, se
                                 </div>
 
                                 <p className="text-gray-300 group-hover:text-white font-mono text-sm font-medium">
-                                    {user.username}
-                                    <p className="text-gray-400 text-[12px]">{user.email}</p>
+                                    <h1 className="text-[10px]">
+                                        {user.username}
+                                    </h1>
+                                    <p className="text-gray-400 text-[8px]">{user.email}</p>
                                 </p>
 
                             </div>
