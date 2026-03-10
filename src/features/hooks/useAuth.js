@@ -35,42 +35,40 @@ const useAuth = () => {
 
 
     }
-
     const login = async ({ email, password }, setLoader) => {
         if (!email || !password) {
-            return showError('All feilds are required')
-        }
-
-        const payload = {
-            email,
-            password
+            return showError('All fields are required')
         }
 
         try {
-            const res = await loginInUser(payload, setLoader)
-            if (res.data) {
+            const res = await loginInUser({ email, password }, setLoader)
+
+            if (res.data?.user) {
                 showSuccess('User login successfully')
-                setTimeout(() => {
-                    window.location.href = '/'
-                }, 1000)
+
+                localStorage.setItem('user', JSON.stringify(res.data.user))
+
+                setUser(res.data.user)
+
+                navigate('/')
             }
-            localStorage.setItem('user', JSON.stringify(res.data.user))
         }
         catch (err) {
-            if (err.response && err.response.status === 401) {
-                showError("Invalid credentials")
-            }
-            else {
-                showError("Invalid credentials")
-            }
+            showError("Invalid credentials")
         }
     }
 
     const logout = async () => {
         await api.get('/auth/logout')
-        const user = localStorage.getItem('user')
+
+        const user = JSON.parse(localStorage.getItem('user'))
+
         localStorage.removeItem('user')
-        localStorage.removeItem(`message_${user.id}`)
+
+        if (user?.id) {
+            localStorage.removeItem(`message_${user.id}`)
+        }
+
         setUser(null)
     }
 

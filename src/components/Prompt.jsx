@@ -44,7 +44,7 @@ const Prompt = ({ setMenuClose, setLargeMenu, largeMenu, message, setMessage }) 
 
     try {
       const user = JSON.parse(localStorage.getItem('user'))
-      const history = JSON.parse(localStorage.getItem(`message_${user.id}`))
+      const history = JSON.parse(localStorage.getItem(`message_${user?.id}`))
 
       const data = await convercationWithAi(userMessage, history)
 
