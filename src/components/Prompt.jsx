@@ -99,7 +99,7 @@ const Prompt = ({ setMenuClose, setLargeMenu, largeMenu, message, setMessage }) 
       </div>
 
       {/* Desktop menu button */}
-      <div className="hidden md:block p-4 absolute top-0 left-0">
+      <div className="hidden md:block p-4 fixed top-0 left-0">
         <MenuIcon
           className="cursor-pointer text-white"
           onClick={() => setLargeMenu(!largeMenu)}
