@@ -5,7 +5,6 @@ import { Navigate } from 'react-router-dom'
 import { Loader } from 'lucide-react'
 import { Outlet } from 'react-router-dom'
 import { AuthCon } from '../features/AuthContext'
-import { showError } from '../features/lib/utils'
 
 const Protect = () => {
   const { setUser, user } = AuthCon()
@@ -15,10 +14,10 @@ const Protect = () => {
     const fetchUser = async () => {
       try {
         const res = await api.get('/auth/get-user')
-        setUser(res.data?.user)
+        setUser(res.data?.user || null)
       } catch (err) {
         console.log('user fetch failed', err)
-        showError('Invalid credentials')
+        setUser(null)
       }
       finally {
         setLoader(false)
@@ -26,7 +25,7 @@ const Protect = () => {
     }
 
     fetchUser()
-  }, [])
+  }, [user])
 
 
   if (loader) {

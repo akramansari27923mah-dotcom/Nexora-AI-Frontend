@@ -55,15 +55,21 @@ const useAuth = () => {
         }
         catch (err) {
             console.log('error');
-            
+
             showError("Invalid credentials")
         }
     }
 
     const logout = async () => {
-        await api.get('/auth/logout')
-        localStorage.removeItem('user')
-        setUser(null)
+        try {
+            await api.get('/auth/logout')
+            localStorage.removeItem('user')
+            setUser(null)
+        }
+        catch (err) {
+            console.log(err);
+        }
+
     }
 
     return {
