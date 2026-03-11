@@ -116,7 +116,7 @@ const Prompt = ({ setMenuClose, setLargeMenu, largeMenu, message, setMessage }) 
       {/* Chat area */}
       <div className="flex-1 w-full max-w-4xl mx-auto hide-scroll mb-12 md:mb-20  overflow-y-scroll overflow-x-hidden px-4 py-4">
 
-        {message.length === 0 && (
+        {message?.length === 0 && (
           <div className="flex flex-col justify-center items-center h-[70vh] text-center space-y-4">
             <h1 className="text-4xl font-bold text-white">
               Hey, {user.username} 👋
