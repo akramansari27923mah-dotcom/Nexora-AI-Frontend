@@ -54,6 +54,8 @@ const useAuth = () => {
             }
         }
         catch (err) {
+            console.log('error');
+            
             showError("Invalid credentials")
         }
     }
