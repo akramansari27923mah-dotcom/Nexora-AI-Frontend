@@ -25,7 +25,7 @@ const useAuth = () => {
             localStorage.setItem('user', JSON.stringify(res.data.user))
         }
         catch (err) {
-            if (err.response && err.response.status === 400) {
+            if (err?.response && err?.response?.status === 400) {
                 showError("User already exists")
             }
             else {
@@ -43,12 +43,12 @@ const useAuth = () => {
         try {
             const res = await loginInUser({ email, password }, setLoader)
 
-            if (res.data?.user) {
+            if (res?.data?.user) {
                 showSuccess('User login successfully')
 
-                localStorage.setItem('user', JSON.stringify(res.data.user))
+                localStorage.setItem('user', JSON.stringify(res?.data?.user))
 
-                setUser(res.data.user)
+                setUser(res?.data?.user)
 
                 navigate('/')
             }
@@ -62,12 +62,7 @@ const useAuth = () => {
 
     const logout = async () => {
         await api.get('/auth/logout')
-
-        const user = JSON.parse(localStorage.getItem('user'))
-
         localStorage.removeItem('user')
-
-
         setUser(null)
     }
 

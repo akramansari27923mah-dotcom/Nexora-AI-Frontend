@@ -80,11 +80,13 @@ const Prompt = ({ setMenuClose, setLargeMenu, largeMenu, message, setMessage }) 
   }, [message])
 
   const deleteChat = () => {
-    if (message.length !== 0) {
+    if (message?.length !== 0) {
       setMessage([])
       return
     }
-    showError('No chats yet')
+    else {
+      showError('No chats yet')
+    }
   }
 
   return (
@@ -127,29 +129,29 @@ const Prompt = ({ setMenuClose, setLargeMenu, largeMenu, message, setMessage }) 
           </div>
         )}
 
-        {message.map((msg, index) => (
+        {message?.map((msg, index) => (
           <div
             key={index}
             className={`flex items-start gap-3 my-4 ${msg.role === "user" ? "justify-end" : "justify-start"
               }`}
           >
 
-            {msg.role !== "user" && (
+            {msg?.role !== "user" && (
               <div className="w-8 h-8 flex items-center justify-center rounded-full bg-purple-600 text-sm font-bold">
                 AI
               </div>
             )}
 
             <div
-              className={`max-w-[80%] px-4 py-3 rounded-2xl text-sm leading-relaxed shadow-md ${msg.role === "user"
+              className={`max-w-[80%] px-4 py-3 rounded-2xl text-sm leading-relaxed shadow-md ${msg?.role === "user"
                 ? "bg-blue-600 text-white rounded-br-none"
                 : "bg-gray-800 text-gray-100 rounded-bl-none"
                 }`}
             >
-              <ChatMarkdown content={msg.content} />
+              <ChatMarkdown content={msg?.content} />
             </div>
 
-            {msg.role === "user" && (
+            {msg?.role === "user" && (
               <div className="w-8 h-8 flex items-center justify-center rounded-full bg-blue-500 text-sm font-bold">
                 U
               </div>
@@ -180,14 +182,14 @@ const Prompt = ({ setMenuClose, setLargeMenu, largeMenu, message, setMessage }) 
             disabled={loader}
             autoFocus
             onKeyDown={handelEnter}
-            onChange={(e) => setInputValue(e.target.value)}
+            onChange={(e) => setInputValue(e?.target?.value)}
             placeholder="Message DeepSeek..."
             className="flex-1 bg-transparent text-white placeholder-gray-400 outline-none px-2"
           />
 
           <button
             disabled={!inputValue.trim() || loader}
-            className="p-2 rounded-xl bg-blue-600 hover:bg-blue-700 transition disabled:opacity-50"
+            className="p-2 rounded-xl bg-blue-600 hover:bg-blue-700 transition disabled:opacity-50 disabled:cursor-not-allowed"
             onClick={sendMessage}
           >
             <Send size={18} />

@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/set-state-in-effect */
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 
 const History = () => {
     const [history, setHistory] = useState([])
@@ -10,7 +10,9 @@ const History = () => {
 
             if (user) {
                 const his = JSON.parse(localStorage.getItem(`message_${user.id}`))
-                setHistory(his)
+                if (his) {
+                    setHistory(his)
+                }
             }
         }
         catch (err) {
@@ -18,12 +20,10 @@ const History = () => {
         }
     }, [])
 
-    console.log(history);
-
     return (
         <div>
             {
-                history.length === 0 &&
+                history?.length === 0 &&
                 (
                     <p>
                         No chat history yet
@@ -32,7 +32,7 @@ const History = () => {
             }
 
             {
-                history.map((h, ind) => (
+                history?.map((h, ind) => (
                     <div
                         key={ind}
                         className="px-3 py-2 rounded-lg cursor-pointer hover:bg-gray-200 transition-all duration-200"
